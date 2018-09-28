@@ -31,14 +31,14 @@ def setServoAngle(servo, start_angle ,end_angle):
         print dutyCycle
         pwm.ChangeDutyCycle(dutyCycle)
         sleep(0.1)
-        pwm.stop()
+    pwm.stop()
 
 if __name__ == '__main__':
     import sys
     if len(sys.argv) == 1:
-        setServoAngle(pan, 20, 180)
-        setServoAngle(tilt, 30 , 120)
-        setServoAngle(z_tilt, 30, 120)
+        setServoAngle(pan, 30, 149)
+        setServoAngle(tilt, 30 , 150)
+        setServoAngle(z_tilt, 30, 150)
     else:
         print sys.argv
         #setServoAngle(pan,int(sys.argv[1])) # 30 ==> 90 (middle point) ==> 150
