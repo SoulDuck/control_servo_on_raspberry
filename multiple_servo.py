@@ -13,14 +13,12 @@ GPIO.setup(z_tilt, GPIO.OUT) # gray ==> PAN
 
 def setServoAngle(servo, angle):
     assert angle >=30 and angle <= 150 , ''
-    for i in range(5,angle):
-        i = i * 5
-        pwm = GPIO.PWM(servo, 100)
-        pwm.start(20)
-        dutyCycle = angle / 18. + 3.
-        pwm.ChangeDutyCycle(dutyCycle)
-        sleep(0.1)
-        pwm.stop()
+    pwm = GPIO.PWM(servo, 100)
+    pwm.start(20)
+    dutyCycle = angle / 18. + 3.
+    pwm.ChangeDutyCycle(dutyCycle)
+    sleep(1)
+    pwm.stop()
 
 if __name__ == '__main__':
     import sys
