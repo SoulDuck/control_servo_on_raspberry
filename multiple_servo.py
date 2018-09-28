@@ -12,6 +12,29 @@ GPIO.setup(tilt, GPIO.OUT) # white => TILT
 GPIO.setup(pan, GPIO.OUT) # gray ==> PAN
 GPIO.setup(z_tilt, GPIO.OUT) # gray ==> PAN
 
+
+def duty_check():
+
+    servo = 17
+    hz = 50
+
+    pwm = GPIO.PWM( servo, hz)
+    pwm.start(1)
+
+    for i in range(3):
+        for j in range(1, 6):
+            pwm.ChangeDutyCycle(2.5 *i)
+            sleep(1.5)
+
+def cali(servo , angle):
+    # servo pin , Hz
+    pwm = GPIO.PWM(servo, 50)
+    pwm.start(20)
+    angle = angle / 18. + 3.
+    pwm.ChangeDutyCycle(angle)
+    sleep(0.1)
+    pwm.stop()
+
 def setServoAngle(servo, start_angle ,end_angle):
     #assert start_angle >=30 and start_angle <= 150 , ''
     #assert end_angle>= 30 and end_angle<= 150, ''
@@ -30,13 +53,15 @@ def setServoAngle(servo, start_angle ,end_angle):
         assert dutyCycle > 3.0 and dutyCycle < 13 , 'duty cycle{}'.format(dutyCycle)
         print dutyCycle
         pwm.ChangeDutyCycle(dutyCycle)
-        sleep(0.1)
+        sleep(0.5)
     pwm.stop()
 
 if __name__ == '__main__':
     import sys
     if len(sys.argv) == 1:
+
         setServoAngle(tilt , 0, 180)
+        #cali(tilt , 90)
         #setServoAngle(tilt, 30 , 150)
         #setServoAngle(z_tilt, 30, 150)
     else:
