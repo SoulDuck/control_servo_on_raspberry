@@ -36,9 +36,9 @@ def setServoAngle(servo, start_angle ,end_angle):
 if __name__ == '__main__':
     import sys
     if len(sys.argv) == 1:
-        setServoAngle(pan, 30, 149)
-        setServoAngle(tilt, 30 , 150)
-        setServoAngle(z_tilt, 30, 150)
+        setServoAngle(tilt , 0, 180)
+        #setServoAngle(tilt, 30 , 150)
+        #setServoAngle(z_tilt, 30, 150)
     else:
         print sys.argv
         #setServoAngle(pan,int(sys.argv[1])) # 30 ==> 90 (middle point) ==> 150
