@@ -23,8 +23,8 @@ def setServoAngle(servo, angle):
 if __name__ == '__main__':
     import sys
     if len(sys.argv) == 1:
-        setServoAngle(pan, 150)
-        setServoAngle(tilt, 150)
+        setServoAngle(pan, 90)
+        setServoAngle(tilt, 90)
     else:
 
         print sys.argv
